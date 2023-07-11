@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const io = require("socket.io")(8080, {
   cors: {
-    origin: "*",
+    origin: 'https://client-f42y.onrender.com:3000',
   },
 });
 const secretKey = "My_SECRET_KEY";
