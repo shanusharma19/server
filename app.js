@@ -1,12 +1,18 @@
 const express = require("express");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-const io = require("socket.io")(8080, {
+
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer,  {
   cors: {
     origin: '*',
   },
 });
+
 const secretKey = "My_SECRET_KEY";
 
 // Connect DB
@@ -260,6 +266,6 @@ app.post("/messages", authenticateUser, async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+httpServer.listen(port, () => {
   console.log("listening on port " + port);
 });
