@@ -23,7 +23,6 @@ const User = require("./models/UserSchema");
 const Message = require("./models/MessageSchema");
 
 // app Use
-const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const corsOptions ={
